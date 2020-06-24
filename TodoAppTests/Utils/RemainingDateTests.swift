@@ -24,7 +24,7 @@ class RemainingDateTests: XCTestCase {
         )
         XCTAssertEqual(
             remainingDate.buildString(to: calendar.date(byAdding: DateComponents(hour: 2, minute: 30), to: now)!),
-            "2 hours, 30 minutes"
+            "2 hours"
         )
         XCTAssertEqual(
             remainingDate.buildString(to: calendar.date(byAdding: DateComponents(day: 1), to: now)!),
@@ -36,7 +36,7 @@ class RemainingDateTests: XCTestCase {
         )
         XCTAssertEqual(
             remainingDate.buildString(to: calendar.date(byAdding: DateComponents(day: 2, hour: 4, minute: 33), to: now)!),
-            "2 days, 4 hours"
+            "2 days"
         )
         XCTAssertEqual(
             remainingDate.buildString(to: calendar.date(byAdding: DateComponents(day: 2, minute: 33), to: now)!),
@@ -48,7 +48,7 @@ class RemainingDateTests: XCTestCase {
         )
         XCTAssertEqual(
             remainingDate.buildString(to: calendar.date(byAdding: DateComponents(day: 1, weekOfMonth: 3), to: now)!),
-            "3 weeks, 1 day"
+            "3 weeks"
         )
     }
 

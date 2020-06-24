@@ -38,29 +38,12 @@ class RemainingDate {
     }
     
     private func buildString(_ components: [RemainingDateComponent]) -> String {
-        // select first full value as the first index
-        guard let firstIndex = components.firstIndex(where: { $0.value != 0 }) else {
+        // find first full value
+        guard let index = components.firstIndex(where: { $0.value != 0 }) else {
             return ""
         }
-        // select next index as the last index if available
-        var lastIndex = firstIndex + 1
-        if lastIndex == components.count || components[lastIndex].value == 0 {
-            lastIndex = firstIndex
-        }
         
-        return buildString(components[firstIndex...lastIndex])
-    }
-    
-    private func buildString(_ components: ArraySlice<RemainingDateComponent>) -> String {
-        var str = ""
-        for component in components {
-            str += component.description
-            if component != components.last {
-                str += ", "
-            }
-        }
-        
-        return str
+        return components[index].description
     }
 
 }
