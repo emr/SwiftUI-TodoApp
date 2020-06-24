@@ -1,6 +1,7 @@
 import SwiftUI
 
-let remainingDate = RemainingDate(calendar: Calendar.current, from: Date())
+let remainingDate = RemainingDate(calendar: Calendar.current, format: .short)
+let now = Date()
 
 struct TodoRow: View {
     var todo: Todo
@@ -17,7 +18,7 @@ struct TodoRow: View {
                     .foregroundColor(Color.gray)
             }
             Spacer()
-            Text(remainingDate.buildString(to: todo.dueDate))
+            Text(remainingDate.buildString(from: now, to: todo.dueDate))
                 .font(.caption)
                 .foregroundColor(Color.gray)
             Button(action: {
