@@ -21,10 +21,10 @@ struct TodoRow: View {
                 .foregroundColor(Color.gray)
             Button(action: {
             }) {
-                Image(systemName: "info.circle")
+                Image(systemName: self.done ? "largecircle.fill.circle" : "circle")
             }
         }
-        .padding()
+            .padding([.top, .bottom], 10)
     }
 }
 
