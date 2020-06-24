@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  TodoApp
-//
-//  Created by Emre Akinci on 23.06.2020.
-//  Copyright © 2020 Emre Akinci. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
