@@ -4,6 +4,7 @@ let remainingDate = RemainingDate(calendar: Calendar.current, from: Date())
 
 struct TodoRow: View {
     var todo: Todo
+    @Binding var done: Bool
     
     var body: some View {
         HStack {
@@ -31,18 +32,14 @@ struct TodoRow: View {
 struct TodoRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TodoRow(todo: Todo(
-                status: .todo,
-                title: "Todo Title",
-                description: "Not done yet.",
-                dueDate: Date().addingTimeInterval(1800)
-            ))
-            TodoRow(todo: Todo(
-                status: .done,
-                title: "Todo Title with a freaking long title and done status",
-                description: "This todo is done.",
-                dueDate: Date().addingTimeInterval(86400)
-            ))
+            TodoRow(
+                todo: TodoFixtures.get(0),
+                done: .constant(false)
+            )
+            TodoRow(
+                todo: TodoFixtures.get(1),
+                done: .constant(true)
+            )
         }
             .previewLayout(.sizeThatFits)
     }

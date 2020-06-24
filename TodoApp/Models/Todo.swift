@@ -5,7 +5,8 @@ enum TodoStatus {
     case done
 }
 
-struct Todo {
+struct Todo: Identifiable {
+    var id: Int
     var status: TodoStatus
     var title: String
     var description: String

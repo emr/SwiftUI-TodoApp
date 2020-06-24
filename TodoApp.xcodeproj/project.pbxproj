@@ -20,6 +20,7 @@
 		BE2BE15D24A2A3C100927A6E /* RemainingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE15B24A2A3C100927A6E /* RemainingDate.swift */; };
 		BE2BE15E24A2A3C100927A6E /* RemainingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE15B24A2A3C100927A6E /* RemainingDate.swift */; };
 		BE2BE16424A2A45B00927A6E /* RemainingDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE16324A2A45B00927A6E /* RemainingDateTests.swift */; };
+		BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE16624A3D30000927A6E /* TodoFixtures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		BE2BE14F24A2645300927A6E /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		BE2BE15B24A2A3C100927A6E /* RemainingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDate.swift; sourceTree = "<group>"; };
 		BE2BE16324A2A45B00927A6E /* RemainingDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDateTests.swift; sourceTree = "<group>"; };
+		BE2BE16624A3D30000927A6E /* TodoFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFixtures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 		BE2BE14924A2516600927A6E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BE2BE16524A3D2EA00927A6E /* Fixtures */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -209,6 +212,14 @@
 				BE2BE16324A2A45B00927A6E /* RemainingDateTests.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BE2BE16524A3D2EA00927A6E /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				BE2BE16624A3D30000927A6E /* TodoFixtures.swift */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +354,7 @@
 			files = (
 				BE2BE11624A2494B00927A6E /* AppDelegate.swift in Sources */,
 				BE2BE15C24A2A3C100927A6E /* RemainingDate.swift in Sources */,
+				BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */,
 				BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */,
 				BE2BE14E24A2522D00927A6E /* TodoRow.swift in Sources */,
 				BE2BE11A24A2494B00927A6E /* TodoList.swift in Sources */,

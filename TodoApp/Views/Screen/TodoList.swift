@@ -1,26 +1,22 @@
 import SwiftUI
 
 struct TodoList: View {
+    @State var todos: [Todo]
+    
     var body: some View {
         List {
-            TodoRow(todo: Todo(
-                status: .todo,
-                title: "Todo Title",
-                description: "Not done yet.",
-                dueDate: Date().addingTimeInterval(1800)
-            ))
-            TodoRow(todo: Todo(
-                status: .done,
-                title: "Todo Title with a freaking long title and done status",
-                description: "This todo is done.",
-                dueDate: Date().addingTimeInterval(86400)
-            ))
+            ForEach (todos) { todo in
+                TodoRow(todo: todo, done: .constant(false))
+            }
         }
     }
 }
 
 struct TodoList_Previews: PreviewProvider {
     static var previews: some View {
-        TodoList()
+        TodoList(todos: [
+            TodoFixtures.get(0),
+            TodoFixtures.get(1),
+        ])
     }
 }
