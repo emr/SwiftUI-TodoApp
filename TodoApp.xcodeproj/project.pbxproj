@@ -23,7 +23,7 @@
 		BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE16624A3D30000927A6E /* TodoFixtures.swift */; };
 		BE2BE17124A3FAA300927A6E /* TodoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17024A3FAA300927A6E /* TodoDetail.swift */; };
 		BE2BE17624A4A04300927A6E /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17524A4A04300927A6E /* EventRow.swift */; };
-		BE2BE17824A4AEFC00927A6E /* CreateTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17724A4AEFC00927A6E /* CreateTodo.swift */; };
+		BE2BE17824A4AEFC00927A6E /* EditTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17724A4AEFC00927A6E /* EditTodo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		BE2BE16624A3D30000927A6E /* TodoFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFixtures.swift; sourceTree = "<group>"; };
 		BE2BE17024A3FAA300927A6E /* TodoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetail.swift; sourceTree = "<group>"; };
 		BE2BE17524A4A04300927A6E /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
-		BE2BE17724A4AEFC00927A6E /* CreateTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodo.swift; sourceTree = "<group>"; };
+		BE2BE17724A4AEFC00927A6E /* EditTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +170,7 @@
 			children = (
 				BE2BE11924A2494B00927A6E /* TodoList.swift */,
 				BE2BE17024A3FAA300927A6E /* TodoDetail.swift */,
-				BE2BE17724A4AEFC00927A6E /* CreateTodo.swift */,
+				BE2BE17724A4AEFC00927A6E /* EditTodo.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 				BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */,
 				BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */,
 				BE2BE14E24A2522D00927A6E /* TodoRow.swift in Sources */,
-				BE2BE17824A4AEFC00927A6E /* CreateTodo.swift in Sources */,
+				BE2BE17824A4AEFC00927A6E /* EditTodo.swift in Sources */,
 				BE2BE11A24A2494B00927A6E /* TodoList.swift in Sources */,
 				BE2BE15024A2645300927A6E /* Todo.swift in Sources */,
 			);
