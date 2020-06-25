@@ -13,40 +13,68 @@ struct TodoDetail: View {
         self.remainingDate = RemainingDate(calendar: Calendar.current, format: .medium)
     }
     
+    var editButton: some View {
+        Button(action: {}) {
+            Text("Edit")
+        }
+    }
+    
     var body: some View {
-        List {
-            Button(action: {}) {
-                HStack {
-                    Image(systemName: todo.status == .done ? "largecircle.fill.circle" : "circle")
-                    Text(todo.title)
-                        .font(.headline)
-                }
-            }
-            EventRow(
-                icon: Image(systemName: "clock"),
-                label: "Remaining time",
-                value: remainingDate.buildString(from: Date(), to: todo.dueDate)
-            )
-            Text(todo.description)
-                .font(.callout)
-                .padding()
-            EventRow(
-                icon: Image(systemName: "plus.circle"),
-                label: "Created at",
-                value: dateFormatter.string(from: todo.createdAt),
-                description: remainingDate.buildString(from: todo.createdAt, to: Date()) + " ago"
-            )
-            Spacer()
-            HStack {
-                Spacer()
+        Form {
+            Section {
                 Button(action: {}) {
-                    Text("Delete")
-                        .foregroundColor(Color.red)
+                    HStack {
+                        Image(systemName: todo.status == .done ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(Color.green)
+                        Text(todo.title)
+                            .font(.headline)
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.black)
+                    }
                 }
-                Spacer()
+                EventRow(
+                    icon: Image(systemName: "clock"),
+                    label: Text("Remaining time"),
+                    value: Text(remainingDate.buildString(from: Date(), to: todo.dueDate))
+                )
+                Text(todo.description)
+                    .font(.callout)
+                    .padding()
+            }
+            Section (header: Text("Events")) {
+                EventRow(
+                    icon: Image(systemName: "plus.circle"),
+                    label: Text("Created at"),
+                    value: Text(dateFormatter.string(from: todo.createdAt)),
+                    description: Text(remainingDate.buildString(from: todo.createdAt, to: Date()) + " ago")
+                )
+            }
+            Section(header: Text("Actions")) {
+                HStack {
+                    Spacer()
+                    Button(action: {}) {
+                        Text("Done")
+                            .foregroundColor(Color.green)
+                    }
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    editButton
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    Button(action: {}) {
+                        Text("Delete")
+                            .foregroundColor(Color.red)
+                    }
+                    Spacer()
+                }
             }
         }
             .navigationBarTitle(Text(todo.title))
+            .navigationBarItems(trailing: editButton)
     }
 }
 

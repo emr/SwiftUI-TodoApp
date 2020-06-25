@@ -2,23 +2,23 @@ import SwiftUI
 
 struct EventRow: View {
     var icon: Image
-    var label: String
-    var value: String
-    var description: String?
+    var label: Text
+    var value: Text
+    var description: Text?
     
     var body: some View {
         HStack(alignment: .top) {
             HStack {
                 icon
-                Text(label)
+                label
                     .font(.headline)
                     .foregroundColor(Color.gray)
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text(value)
+                value
                 if description != nil {
-                    Text(description!)
+                    description!
                         .font(.subheadline)
                         .foregroundColor(Color.gray)
                 }
@@ -32,14 +32,14 @@ struct EventRow_Previews: PreviewProvider {
         Group {
             EventRow(
                 icon: Image(systemName: "bag.badge.plus"),
-                label: "Label",
-                value: "Value with description",
-                description: "This row has both value and description"
+                label: Text("Label"),
+                value: Text("Value with description"),
+                description: Text("This row has both value and description")
             )
             EventRow(
                 icon: Image(systemName: "bag.badge.plus"),
-                label: "Label",
-                value: "Value without description"
+                label: Text("Label"),
+                value: Text("Value without description")
             )
         }
             .padding()
