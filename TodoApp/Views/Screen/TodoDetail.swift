@@ -21,7 +21,7 @@ struct TodoDetail: View {
     
     var body: some View {
         Form {
-            Section {
+            Section(header: Text("Detail")) {
                 Button(action: {}) {
                     HStack {
                         Image(systemName: todo.status == .done ? "largecircle.fill.circle" : "circle")
