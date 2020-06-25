@@ -46,6 +46,7 @@ struct TodoDetail: View {
                 Spacer()
             }
         }
+            .navigationBarTitle(Text(todo.title))
     }
 }
 

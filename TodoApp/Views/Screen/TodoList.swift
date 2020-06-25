@@ -4,10 +4,15 @@ struct TodoList: View {
     @State var todos: [Todo]
     
     var body: some View {
-        List {
-            ForEach (todos) { todo in
-                TodoRow(todo: todo, done: .constant(false))
+        NavigationView {
+            List {
+                ForEach (todos) { todo in
+                    NavigationLink(destination: TodoDetail(todo: todo)) {
+                        TodoRow(todo: todo, done: .constant(false))
+                    }
+                }
             }
+                .navigationBarTitle(Text("Todos"))
         }
     }
 }
