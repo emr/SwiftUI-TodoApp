@@ -10,5 +10,6 @@ struct Todo: Identifiable {
     var status: TodoStatus
     var title: String
     var description: String
+    var createdAt: Date
     var dueDate: Date
 }

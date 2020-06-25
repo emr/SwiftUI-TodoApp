@@ -21,6 +21,8 @@
 		BE2BE15E24A2A3C100927A6E /* RemainingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE15B24A2A3C100927A6E /* RemainingDate.swift */; };
 		BE2BE16424A2A45B00927A6E /* RemainingDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE16324A2A45B00927A6E /* RemainingDateTests.swift */; };
 		BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE16624A3D30000927A6E /* TodoFixtures.swift */; };
+		BE2BE17124A3FAA300927A6E /* TodoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17024A3FAA300927A6E /* TodoDetail.swift */; };
+		BE2BE17624A4A04300927A6E /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17524A4A04300927A6E /* EventRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		BE2BE15B24A2A3C100927A6E /* RemainingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDate.swift; sourceTree = "<group>"; };
 		BE2BE16324A2A45B00927A6E /* RemainingDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingDateTests.swift; sourceTree = "<group>"; };
 		BE2BE16624A3D30000927A6E /* TodoFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFixtures.swift; sourceTree = "<group>"; };
+		BE2BE17024A3FAA300927A6E /* TodoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetail.swift; sourceTree = "<group>"; };
+		BE2BE17524A4A04300927A6E /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				BE2BE11924A2494B00927A6E /* TodoList.swift */,
+				BE2BE17024A3FAA300927A6E /* TodoDetail.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				BE2BE14D24A2522D00927A6E /* TodoRow.swift */,
+				BE2BE17524A4A04300927A6E /* EventRow.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -353,7 +359,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE2BE11624A2494B00927A6E /* AppDelegate.swift in Sources */,
+				BE2BE17624A4A04300927A6E /* EventRow.swift in Sources */,
 				BE2BE15C24A2A3C100927A6E /* RemainingDate.swift in Sources */,
+				BE2BE17124A3FAA300927A6E /* TodoDetail.swift in Sources */,
 				BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */,
 				BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */,
 				BE2BE14E24A2522D00927A6E /* TodoRow.swift in Sources */,
