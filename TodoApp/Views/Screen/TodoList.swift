@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TodoList: View {
     @State var todos: [Todo]
+    @State var showCreateScreen = false
     
     var body: some View {
         NavigationView {
@@ -13,6 +14,16 @@ struct TodoList: View {
                 }
             }
                 .navigationBarTitle(Text("Todos"))
+                .navigationBarItems(
+                    trailing: Button(action: {
+                        self.showCreateScreen.toggle()
+                    }) {
+                        Image(systemName: showCreateScreen ? "plus.circle.fill" : "plus.circle")
+                    }
+                )
+                .sheet(isPresented: $showCreateScreen, content: {
+                    CreateTodo()
+                })
         }
     }
 }
