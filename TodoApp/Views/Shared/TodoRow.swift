@@ -16,6 +16,7 @@ struct TodoRow: View {
                 Text(todo.description)
                     .font(.caption)
                     .foregroundColor(Color.gray)
+                    .lineLimit(2)
             }
             Spacer()
             Text(remainingDate.buildString(from: now, to: todo.dueDate))
