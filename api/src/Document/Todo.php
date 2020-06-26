@@ -31,12 +31,22 @@ class Todo
     /**
      * @Field(type="date")
      */
+    public \DateTimeInterface $createdAt;
+
+    /**
+     * @Field(type="date")
+     */
     public \DateTimeInterface $dueDate;
 
     /**
      * @Id(type="string")
      */
     private string $id;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): string
     {
