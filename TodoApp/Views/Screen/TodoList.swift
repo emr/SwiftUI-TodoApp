@@ -9,7 +9,7 @@ struct TodoList: View {
             List {
                 ForEach (todos) { todo in
                     NavigationLink(destination: TodoDetail(todo: todo)) {
-                        TodoRow(todo: todo, done: .constant(false))
+                        TodoRow(todo: todo)
                     }
                 }
             }

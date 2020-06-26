@@ -5,7 +5,6 @@ let now = Date()
 
 struct TodoRow: View {
     var todo: Todo
-    @Binding var done: Bool
     
     var body: some View {
         HStack {
@@ -24,7 +23,7 @@ struct TodoRow: View {
                 .foregroundColor(Color.gray)
             Button(action: {
             }) {
-                Image(systemName: self.done ? "largecircle.fill.circle" : "circle")
+                Image(systemName: self.todo.status == .done ? "largecircle.fill.circle" : "circle")
             }
         }
             .padding([.top, .bottom], 10)
@@ -35,12 +34,10 @@ struct TodoRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TodoRow(
-                todo: TodoFixtures.get(0),
-                done: .constant(false)
+                todo: TodoFixtures.get(0)
             )
             TodoRow(
-                todo: TodoFixtures.get(1),
-                done: .constant(true)
+                todo: TodoFixtures.get(1)
             )
         }
             .previewLayout(.sizeThatFits)
