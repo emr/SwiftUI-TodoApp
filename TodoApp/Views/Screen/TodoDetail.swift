@@ -1,20 +1,21 @@
 import SwiftUI
 
 struct TodoDetail: View {
-    var todo: Todo
     var dateFormatter: DateFormatter
     var remainingDate: RemainingDate
+    @State var todo: Todo
+    @State var showEditScreen = false
     
     init(todo: Todo) {
-        self.todo = todo
         dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        self.remainingDate = RemainingDate(calendar: Calendar.current, format: .medium)
+        remainingDate = RemainingDate(calendar: Calendar.current, format: .medium)
+        _todo = State(initialValue: todo)
     }
     
     var editButton: some View {
-        Button(action: {}) {
+        Button(action: { self.showEditScreen = true }) {
             Text("Edit")
         }
     }
@@ -75,6 +76,17 @@ struct TodoDetail: View {
         }
             .navigationBarTitle(Text(todo.title))
             .navigationBarItems(trailing: editButton)
+            .sheet(isPresented: $showEditScreen, content: {
+                EditTodo(
+                    intent: .edit,
+                    todo: self.todo,
+                    onSave: self.handleSave
+                )
+            })
+    }
+
+    private func handleSave(todo: Todo) {
+        showEditScreen = false
     }
 }
 
