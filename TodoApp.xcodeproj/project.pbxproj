@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE06AF7124A6853D00C86374 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06AF7024A6853D00C86374 /* ApiClient.swift */; };
 		BE2BE11624A2494B00927A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE11524A2494B00927A6E /* AppDelegate.swift */; };
 		BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE11724A2494B00927A6E /* SceneDelegate.swift */; };
 		BE2BE11A24A2494B00927A6E /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE11924A2494B00927A6E /* TodoList.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE06AF7024A6853D00C86374 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		BE2BE11224A2494B00927A6E /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2BE11524A2494B00927A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE2BE11724A2494B00927A6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		BE2BE14A24A2517B00927A6E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BE06AF7024A6853D00C86374 /* ApiClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				BE2BE17124A3FAA300927A6E /* TodoDetail.swift in Sources */,
 				BE2BE16724A3D30000927A6E /* TodoFixtures.swift in Sources */,
 				BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */,
+				BE06AF7124A6853D00C86374 /* ApiClient.swift in Sources */,
 				BE2BE14E24A2522D00927A6E /* TodoRow.swift in Sources */,
 				BE2BE17824A4AEFC00927A6E /* EditTodo.swift in Sources */,
 				BE2BE11A24A2494B00927A6E /* TodoList.swift in Sources */,
