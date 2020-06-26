@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 fileprivate func normalizePath(_ path: String) -> String {
     path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
@@ -22,6 +23,7 @@ struct UrlPath {
 
 enum ApiClientError: Error {
     case cannotCreateUrl(baseUrl: String, path: String)
+    case responseError
 }
 
 struct ApiClient {
@@ -34,33 +36,35 @@ struct ApiClient {
         decoder.dateDecodingStrategy = .iso8601
     }
     
-    func get<T: Decodable>(path: String, onSuccess: @escaping (T) -> Void) throws -> Void {
+    func get<T: Decodable>(path: String) throws -> AnyPublisher<T, Error> {
         let request = try createRequest(path)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if data == nil || error != nil {
-                return
+        return URLSession.DataTaskPublisher(request: request, session: .shared)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse, 200 == httpResponse.statusCode else {
+                    throw ApiClientError.responseError
+                }
+                return self.decodeResult(data)
             }
-            
-            onSuccess(self.decodeResult(data!))
-        }.resume()
+            .eraseToAnyPublisher()
     }
     
-    func post<T: Decodable>(path: String, onSuccess: @escaping (T) -> Void) throws -> Void {
+    func post<T: Decodable>(path: String) throws -> AnyPublisher<T, Error> {
         let request = try createRequest(path, method: "POST")
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if data == nil || error != nil {
-                return
-            }
-            
-            onSuccess(self.decodeResult(data!))
-        }.resume()
+        return URLSession.DataTaskPublisher(request: request, session: .shared)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse, 201 == httpResponse.statusCode else {
+                    throw ApiClientError.responseError
+                }
+                return self.decodeResult(data)
+        }
+        .eraseToAnyPublisher()
     }
     
     private func createRequest(_ path: String, method: String? = nil) throws -> URLRequest {
         guard let url = URL(string: "\(baseUrl)/\(normalizePath(path))") else {
             throw ApiClientError.cannotCreateUrl(baseUrl: baseUrl, path: path)
         }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
         request.setValue("application/json", forHTTPHeaderField: "accept")
         if method != nil {
             request.httpMethod = method
