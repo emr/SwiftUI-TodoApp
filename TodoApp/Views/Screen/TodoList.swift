@@ -22,7 +22,7 @@ struct TodoList: View {
                 .sheet(isPresented: $showCreateScreen, content: {
                     EditTodo(
                         intent: .create,
-                        todo: Todo(id: 0, status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
+                        todo: Todo(id: "", status: .todo, title: "", description: "", createdAt: Date(), dueDate: Date()),
                         onSave: self.handleSave
                     )
                 })

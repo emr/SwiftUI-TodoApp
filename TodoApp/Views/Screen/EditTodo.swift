@@ -51,7 +51,7 @@ struct CreateTodo_Previews: PreviewProvider {
         Group {
             EditTodo(
                 intent: .edit,
-                todo: Todo(id: 0, status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
+                todo: Todo(id: "", status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
                 onSave: {_ in}
             )
             EditTodo(

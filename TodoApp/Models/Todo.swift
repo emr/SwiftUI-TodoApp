@@ -1,15 +1,15 @@
 import Foundation
 
 struct Todo: Identifiable {
-    var id: Int
+    var id: String
     var status: Status
     var title: String
     var description: String
     var createdAt: Date
     var dueDate: Date
     
-    enum Status {
-        case todo
-        case done
+    enum Status: String, Codable {
+        case todo = "todo"
+        case done = "done"
     }
 }
