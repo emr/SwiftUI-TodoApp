@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE06AF6B24A6504300C86374 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06AF6A24A6504300C86374 /* Environment.swift */; };
 		BE06AF7124A6853D00C86374 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE06AF7024A6853D00C86374 /* ApiClient.swift */; };
 		BE2BE11624A2494B00927A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE11524A2494B00927A6E /* AppDelegate.swift */; };
 		BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE11724A2494B00927A6E /* SceneDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE06AF6A24A6504300C86374 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		BE06AF7024A6853D00C86374 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		BE2BE11224A2494B00927A6E /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2BE11524A2494B00927A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				BE2BE11B24A2494D00927A6E /* Assets.xcassets */,
 				BE2BE12324A2494D00927A6E /* Info.plist */,
 				BE2BE11D24A2494D00927A6E /* Preview Content */,
+				BE06AF6A24A6504300C86374 /* Environment.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE2BE11624A2494B00927A6E /* AppDelegate.swift in Sources */,
+				BE06AF6B24A6504300C86374 /* Environment.swift in Sources */,
 				BE2BE17624A4A04300927A6E /* EventRow.swift in Sources */,
 				BE2BE15C24A2A3C100927A6E /* RemainingDate.swift in Sources */,
 				BE2BE17124A3FAA300927A6E /* TodoDetail.swift in Sources */,
