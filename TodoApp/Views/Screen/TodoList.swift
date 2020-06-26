@@ -3,7 +3,6 @@ import SwiftUI
 struct TodoList: View {
     @State var todos: [Todo]
     @State var showCreateScreen = false
-    @State private var newTodo: Todo = Todo(id: 0, status: .done, title: "", description: "", createdAt: Date(), dueDate: Date())
     
     var body: some View {
         NavigationView {
@@ -23,21 +22,16 @@ struct TodoList: View {
                 .sheet(isPresented: $showCreateScreen, content: {
                     EditTodo(
                         intent: .create,
-                        todo: self.$newTodo,
-                        onSave: self.handleSave,
-                        validate: self.validateNewTodo
+                        todo: Todo(id: 0, status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
+                        onSave: self.handleSave
                     )
                 })
         }
     }
     
-    private func handleSave() {
-        self.todos.append(self.newTodo)
+    private func handleSave(todo: Todo) {
+        self.todos.append(todo)
         showCreateScreen = false
-    }
-    
-    private func validateNewTodo() -> Bool {
-        !newTodo.title.isEmpty && !newTodo.description.isEmpty
     }
 }
 

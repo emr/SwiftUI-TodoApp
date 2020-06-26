@@ -7,16 +7,15 @@ struct EditTodo: View {
     }
     
     var intent: Intent
-    @Binding var todo: Todo
-    var onSave: () -> Void
-    var validate: () -> Bool
+    @State var todo: Todo
+    var onSave: (Todo) -> Void
     
     var title: Text {
         Text(intent == .create ? "Create Todo" : "Edit Todo")
     }
     
     var saveButton: some View {
-        Button("Save", action: { self.onSave() }).disabled(!self.validate())
+        Button("Save", action: { self.onSave(self.todo) }).disabled(!self.validate())
     }
     
     var body: some View {
@@ -41,25 +40,24 @@ struct EditTodo: View {
             .navigationBarItems(trailing: saveButton)
         }
     }
+    
+    private func validate() -> Bool {
+        !todo.title.isEmpty && !todo.description.isEmpty
+    }
 }
 
 struct CreateTodo_Previews: PreviewProvider {
-    @State static var todo = TodoFixtures.get(0)
-    @State static var newTodo = Todo(id: 0, status: .done, title: "", description: "", createdAt: Date(), dueDate: Date())
-    
     static var previews: some View {
         Group {
             EditTodo(
                 intent: .edit,
-                todo: $todo,
-                onSave: {},
-                validate: { true }
+                todo: Todo(id: 0, status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
+                onSave: {_ in}
             )
             EditTodo(
                 intent: .create,
-                todo: $newTodo,
-                onSave: {},
-                validate: { false }
+                todo: TodoFixtures.get(0),
+                onSave: {_ in}
             )
         }
     }
