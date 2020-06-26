@@ -86,6 +86,7 @@ struct TodoDetail: View {
     }
 
     private func handleSave(todo: Todo) {
+        self.todo = todo
         showEditScreen = false
     }
 }

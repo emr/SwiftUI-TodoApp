@@ -1,6 +1,6 @@
 import Foundation
 
-struct Todo: Identifiable {
+struct Todo: Codable, Identifiable {
     var id: String
     var status: Status
     var title: String
