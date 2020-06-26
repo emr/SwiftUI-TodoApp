@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 
 struct Todo: Identifiable {
     var id: Int
