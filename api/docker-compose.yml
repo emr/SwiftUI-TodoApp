@@ -10,9 +10,7 @@ services:
     networks:
       - default
   app:
-    build:
-      dockerfile: .docker/app/Dockerfile
-      context: .
+    build: .
     ports:
       - 80:80
     command: php -S 0.0.0.0:80 -t public
