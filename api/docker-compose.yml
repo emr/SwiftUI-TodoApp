@@ -19,9 +19,7 @@ services:
     networks:
       - default
     volumes:
-      - .:/var/www/app:cached
-      - ./vendor:/var/www/app/vendor:delegated
-      - ./var:/var/www/app/var:delegated
+      - .:/var/www/app
 
 networks:
   default: ~
