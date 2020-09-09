@@ -9,6 +9,14 @@ services:
       - 27017:27017
     networks:
       - default
+  db_test:
+    image: mongo:4.2
+    environment:
+      MONGO_INITDB_DATABASE: app_test
+    ports:
+      - 27018:27017
+    networks:
+      - default
   app:
     restart: on-failure
     build: .
