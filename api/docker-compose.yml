@@ -3,18 +3,9 @@ version: "3.8"
 services:
   db:
     image: mongo:4.2
-    environment:
-      MONGO_INITDB_DATABASE: app
+    restart: always
     ports:
       - 27017:27017
-    networks:
-      - default
-  db_test:
-    image: mongo:4.2
-    environment:
-      MONGO_INITDB_DATABASE: app_test
-    ports:
-      - 27018:27017
     networks:
       - default
   app:
