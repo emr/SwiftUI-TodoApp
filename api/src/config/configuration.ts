@@ -18,6 +18,6 @@ export default (): Configuration => ({
   database: {
     type: 'mongodb',
     url: process.env.MONGO_URI || '',
-    entities: [__dirname + '/../**/*.entity.ts'],
+    entities: [__dirname + '/../**/*.entity.{ts,js}'],
   },
 });
