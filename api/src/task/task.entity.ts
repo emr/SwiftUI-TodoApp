@@ -1,5 +1,5 @@
 import { Entity } from 'typeorm';
-import { Column, ObjectIdColumn } from 'typeorm/index';
+import { Column, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class Task {

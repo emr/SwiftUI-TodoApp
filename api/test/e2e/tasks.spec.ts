@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { AppModule } from '../../src/app.module';
 import { Task } from '../../src/task/task.entity';
-import { Repository } from 'typeorm/index';
+import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { createCreateTaskDto, createTask } from '../helper/task';
 

@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { TaskService } from './task.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Task } from './task.entity';
-import { Repository } from 'typeorm/index';
+import { Repository } from 'typeorm';
 import { createCreateTaskDto, createTask } from '../../test/helper/task';
 
 describe('TaskService', () => {
