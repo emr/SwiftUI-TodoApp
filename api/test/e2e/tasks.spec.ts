@@ -33,7 +33,7 @@ describe('AppController (e2e)', () => {
     await connection.synchronize(true);
   });
 
-  it('/ (GET) should return all tasks', async () => {
+  it('/tasks (GET) should return all tasks', async () => {
     const tasks = [
       createTask({ title: 'Task 1' }),
       createTask({ title: 'Task 2' }),
@@ -43,7 +43,7 @@ describe('AppController (e2e)', () => {
     ];
     await Promise.all(tasks.map(t => repository.save(t)));
 
-    const response = await request(app.getHttpServer()).get('/');
+    const response = await request(app.getHttpServer()).get('/tasks');
 
     expect(response.status).toEqual(200);
     expect(response?.body).toEqual(
@@ -58,12 +58,12 @@ describe('AppController (e2e)', () => {
     );
   });
 
-  it('/ (POST) should return the saved task', async () => {
+  it('/tasks (POST) should return the saved task', async () => {
     const data = createCreateTaskDto();
 
     const postedAt = new Date();
     const response = await request(app.getHttpServer())
-      .post('/')
+      .post('/tasks')
       .send(data);
 
     expect(response.status).toEqual(201);
@@ -76,14 +76,14 @@ describe('AppController (e2e)', () => {
     ).toBeLessThan(1000);
   });
 
-  describe('/ (POST) validation errors', () => {
+  describe('/tasks (POST) validation errors', () => {
     it('should return error for empty fields', async () => {
       const data = createCreateTaskDto();
       data.title = '';
       data.status = '';
 
       const response = await request(app.getHttpServer())
-        .post('/')
+        .post('/tasks')
         .send(data);
 
       expect(response.status).toEqual(400);
@@ -102,7 +102,7 @@ describe('AppController (e2e)', () => {
       data.dueDate = 'zero.zero.one.one.zero.one.one';
 
       const response = await request(app.getHttpServer())
-        .post('/')
+        .post('/tasks')
         .send(data);
 
       expect(response.status).toEqual(400);

@@ -3,7 +3,7 @@ import { Task } from './task.entity';
 import CreateTaskDto from './create-task.dto';
 import { TaskService } from './task.service';
 
-@Controller()
+@Controller({ path: '/tasks' })
 export class TaskController {
   constructor(private taskService: TaskService) {}
 
