@@ -3,13 +3,14 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { AppModule } from '../../src/app.module';
 import { Task } from '../../src/task/task.entity';
-import { Repository } from 'typeorm';
+import { Connection, Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { createCreateTaskDto, createTask } from '../helper/task';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   let repository: Repository<Task>;
+  let connection: Connection;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -23,11 +24,13 @@ describe('AppController (e2e)', () => {
       }),
     );
     repository = app.get(getRepositoryToken(Task));
+    connection = app.get(Connection);
+
     await app.init();
   });
 
   beforeEach(async () => {
-    await repository.delete({});
+    await connection.synchronize(true);
   });
 
   it('/ (GET) should return all tasks', async () => {
