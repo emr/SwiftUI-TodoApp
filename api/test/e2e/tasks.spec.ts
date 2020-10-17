@@ -35,17 +35,27 @@ describe('AppController (e2e)', () => {
 
   it('/ (GET) should return all tasks', async () => {
     const tasks = [
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
-      createTask(),
+      createTask({ title: 'Task 1' }),
+      createTask({ title: 'Task 2' }),
+      createTask({ title: 'Task 3' }),
+      createTask({ title: 'Task 4' }),
+      createTask({ title: 'Task 5' }),
     ];
     await Promise.all(tasks.map(t => repository.save(t)));
 
-    console.log(tasks);
+    const response = await request(app.getHttpServer()).get('/');
 
-    const response = request(app.getHttpServer()).get('/');
+    expect(response.status).toEqual(200);
+    expect(response?.body).toEqual(
+      expect.arrayContaining(
+        tasks.map(task => ({
+          ...task,
+          id: task.id?.toString(),
+          dueDate: task.dueDate.toISOString(),
+          createdAt: task.createdAt.toISOString(),
+        })),
+      ),
+    );
   });
 
   it('/ (POST) should return the saved task', async () => {
