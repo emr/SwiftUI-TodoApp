@@ -33,29 +33,31 @@ describe('AppController (e2e)', () => {
     await connection.synchronize(true);
   });
 
-  it('/tasks (GET) should return all tasks', async () => {
-    const tasks = [
-      createTask({ title: 'Task 1' }),
-      createTask({ title: 'Task 2' }),
-      createTask({ title: 'Task 3' }),
-      createTask({ title: 'Task 4' }),
-      createTask({ title: 'Task 5' }),
-    ];
-    await Promise.all(tasks.map(t => repository.save(t)));
+  describe('/tasks (GET)', () => {
+    it('should return all tasks', async () => {
+      const tasks = [
+        createTask({ title: 'Task 1' }),
+        createTask({ title: 'Task 2' }),
+        createTask({ title: 'Task 3' }),
+        createTask({ title: 'Task 4' }),
+        createTask({ title: 'Task 5' }),
+      ];
+      await Promise.all(tasks.map(t => repository.save(t)));
 
-    const response = await request(app.getHttpServer()).get('/tasks');
+      const response = await request(app.getHttpServer()).get('/tasks');
 
-    expect(response.status).toEqual(200);
-    expect(response?.body).toEqual(
-      expect.arrayContaining(
-        tasks.map(task => ({
-          ...task,
-          id: task.id?.toString(),
-          dueDate: task.dueDate.toISOString(),
-          createdAt: task.createdAt.toISOString(),
-        })),
-      ),
-    );
+      expect(response.status).toEqual(200);
+      expect(response?.body).toEqual(
+        expect.arrayContaining(
+          tasks.map(task => ({
+            ...task,
+            id: task.id?.toString(),
+            dueDate: task.dueDate.toISOString(),
+            createdAt: task.createdAt.toISOString(),
+          })),
+        ),
+      );
+    });
   });
 
   describe('/tasks/:id (GET)', () => {
@@ -98,25 +100,25 @@ describe('AppController (e2e)', () => {
     });
   });
 
-  it('/tasks (POST) should return the saved task', async () => {
-    const data = createCreateTaskDto();
+  describe('/tasks (POST)', () => {
+    it('should return the saved task', async () => {
+      const data = createCreateTaskDto();
 
-    const postedAt = new Date();
-    const response = await request(app.getHttpServer())
-      .post('/tasks')
-      .send(data);
+      const postedAt = new Date();
+      const response = await request(app.getHttpServer())
+        .post('/tasks')
+        .send(data);
 
-    expect(response.status).toEqual(201);
-    expect(response.body?.title).toEqual(data.title);
-    expect(response.body?.description).toEqual(data.description);
-    expect(response.body?.status).toEqual(data.status);
-    expect(response.body?.dueDate).toEqual(data.dueDate.toISOString());
-    expect(
-      new Date(response.body?.createdAt).getTime() - postedAt.getTime(),
-    ).toBeLessThan(1000);
-  });
+      expect(response.status).toEqual(201);
+      expect(response.body?.title).toEqual(data.title);
+      expect(response.body?.description).toEqual(data.description);
+      expect(response.body?.status).toEqual(data.status);
+      expect(response.body?.dueDate).toEqual(data.dueDate.toISOString());
+      expect(
+        new Date(response.body?.createdAt).getTime() - postedAt.getTime(),
+      ).toBeLessThan(1000);
+    });
 
-  describe('/tasks (POST) validation errors', () => {
     it('should return error for empty fields', async () => {
       const data = createCreateTaskDto();
       data.title = '';
