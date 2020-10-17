@@ -4,6 +4,7 @@ import { Test } from '@nestjs/testing';
 import { Task } from './task.entity';
 import { createTask } from '../../test/helper/task';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { HttpException, NotFoundException } from '@nestjs/common';
 
 describe('TaskController', () => {
   let taskController: TaskController;
@@ -57,6 +58,29 @@ describe('TaskController', () => {
       jest.spyOn(taskService, 'create').mockResolvedValue(task);
 
       expect(await taskController.create(data)).toEqual(task);
+    });
+  });
+
+  describe('findOne', () => {
+    it('should call taskService.findOne and return the value', async () => {
+      const task = createTask({
+        id: '1',
+        title: 'Title',
+        description: 'Description',
+        status: 'status',
+        dueDate: new Date(),
+      });
+      const spy = jest.spyOn(taskService, 'findOne').mockResolvedValue(task);
+
+      expect(await taskController.findOne('1')).toEqual(task);
+      expect(spy).toHaveBeenCalledWith('1');
+    });
+
+    it('should throw http not found error when a task is not found', async () => {
+      jest.spyOn(taskService, 'findOne').mockResolvedValue(undefined);
+      await expect(taskController.findOne('1')).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
 });

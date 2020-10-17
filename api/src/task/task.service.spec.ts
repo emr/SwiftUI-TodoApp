@@ -49,4 +49,23 @@ describe('TaskService', () => {
     expect(spy).toHaveBeenCalled();
     expect(result).toEqual(tasks);
   });
+
+  it('should return one task', async () => {
+    const task = createTask({ id: '1' });
+    const spy = jest.spyOn(repository, 'findOne').mockResolvedValue(task);
+
+    const result = await service.findOne('1');
+
+    expect(spy).toHaveBeenCalled();
+    expect(result).toEqual(task);
+  });
+
+  it('should return undefined when there is no task in repository', async () => {
+    const spy = jest.spyOn(repository, 'findOne').mockResolvedValue(undefined);
+
+    const result = await service.findOne('1');
+
+    expect(spy).toHaveBeenCalled();
+    expect(result).toEqual(undefined);
+  });
 });

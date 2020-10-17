@@ -21,4 +21,8 @@ export class TaskService {
   findAll(): Promise<Task[]> {
     return this.repository.find();
   }
+
+  findOne(id: string): Promise<Task | undefined> {
+    return this.repository.findOne(id);
+  }
 }

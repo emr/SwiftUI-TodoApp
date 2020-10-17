@@ -58,6 +58,46 @@ describe('AppController (e2e)', () => {
     );
   });
 
+  describe('/tasks/:id (GET)', () => {
+    it('should return a single task', async () => {
+      const task = createTask();
+      await repository.save(task);
+
+      const response = await request(app.getHttpServer()).get(
+        `/tasks/${task.id}`,
+      );
+
+      expect(response.status).toEqual(200);
+      expect(response.body?.title).toEqual(task.title);
+      expect(response.body?.description).toEqual(task.description);
+      expect(response.body?.status).toEqual(task.status);
+      expect(response.body?.dueDate).toEqual(task.dueDate.toISOString());
+      expect(response.body?.createdAt).toEqual(task.createdAt.toISOString());
+    });
+
+    it('should return not found error when there is no task', async () => {
+      const response = await request(app.getHttpServer()).get(
+        '/tasks/a1b2c3d4e5f6',
+      );
+
+      expect(response.status).toEqual(404);
+      expect(response.body?.statusCode).toEqual(404);
+      expect(response.body?.error).toEqual('Not Found');
+      expect(response.body?.message).toEqual(
+        'Task not found with id a1b2c3d4e5f6',
+      );
+    });
+
+    it('should return not found error when the parameter is not a valid object id', async () => {
+      const response = await request(app.getHttpServer()).get('/tasks/999');
+
+      expect(response.status).toEqual(404);
+      expect(response.body?.statusCode).toEqual(404);
+      expect(response.body?.error).toEqual('Not Found');
+      expect(response.body?.message).toEqual('Task not found with id 999');
+    });
+  });
+
   it('/tasks (POST) should return the saved task', async () => {
     const data = createCreateTaskDto();
 
