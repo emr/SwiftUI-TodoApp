@@ -1,10 +1,14 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
+export interface AppConfiguration {
+  env: string;
+  port: number;
+  name: string;
+  projectLink?: string;
+}
+
 interface Configuration {
-  app: {
-    env: string;
-    port: number;
-  };
+  app: AppConfiguration;
   database: TypeOrmModuleOptions;
 }
 
@@ -14,6 +18,8 @@ export default (): Configuration => ({
   app: {
     env,
     port: parseInt(process.env.PORT || '80', 10),
+    name: process.env.APP_NAME || '',
+    projectLink: process.env.APP_PROJECT_LINK,
   },
   database: {
     type: 'mongodb',

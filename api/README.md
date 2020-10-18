@@ -1,31 +1,10 @@
-## Installation
+# api
 
-```bash
-$ yarn
+This is a basic restful API implementation for TodoApp.
+
+To start the api service, just up the containers by using docker compose:
+```
+docker-compose up
 ```
 
-## Running the app
-
-```bash
-# development
-$ yarn start
-
-# watch mode
-$ yarn start:dev
-
-# production mode
-$ yarn start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn test
-
-# e2e tests
-$ yarn test:e2e
-
-# test coverage
-$ yarn test:cov
-```
+You can now access the api documentation on http://localhost
