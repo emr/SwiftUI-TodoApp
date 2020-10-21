@@ -1,18 +1,18 @@
 import SwiftUI
 
 struct TodoList: View {
-    @EnvironmentObject var todoStore: TodoStore
+    @EnvironmentObject var todos: Todos
     @State var showCreateScreen = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach (todoStore.todos) { todo in
+                ForEach (todos.todos) { todo in
                     NavigationLink(destination: TodoDetail(todo: todo)) {
                         TodoRow(todo: todo)
                     }
                 }
-                .onDelete(perform: { self.todoStore.remove(at: $0) })
+                .onDelete(perform: { self.todos.remove(at: $0) })
             }
                 .navigationBarTitle(Text("Todos"))
                 .navigationBarItems(
@@ -31,14 +31,13 @@ struct TodoList: View {
     }
     
     private func handleSave(todo: Todo) {
-        self.todoStore.add(todo: todo)
+        self.todos.add(todo: todo)
         showCreateScreen = false
     }
 }
 
 struct TodoList_Previews: PreviewProvider {
     static var previews: some View {
-        TodoList()
-            .environmentObject(TodoStore())
+        TodoList().environmentObject(Todos(store: FixturesTodoStore()))
     }
 }
