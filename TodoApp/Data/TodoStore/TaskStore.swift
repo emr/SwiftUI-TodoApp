@@ -2,9 +2,9 @@ import Foundation
 
 protocol TaskStore {
     
-    func all() -> [Todo]
+    func all() -> [Task]
     
-    func add(todo: Todo)
+    func add(task: Task)
     
     func remove(at: IndexSet)
     

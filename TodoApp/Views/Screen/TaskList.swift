@@ -1,18 +1,18 @@
 import SwiftUI
 
-struct TodoList: View {
-    @EnvironmentObject var todos: Todos
+struct TaskList: View {
+    @EnvironmentObject var tasks: Tasks
     @State var showCreateScreen = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach (todos.todos) { todo in
-                    NavigationLink(destination: TodoDetail(todo: todo)) {
-                        TodoRow(todo: todo)
+                ForEach (tasks.tasks) { task in
+                    NavigationLink(destination: TaskDetail(task: task)) {
+                        TaskRow(task: task)
                     }
                 }
-                .onDelete(perform: { self.todos.remove(at: $0) })
+                .onDelete(perform: { self.tasks.remove(at: $0) })
             }
                 .navigationBarTitle(Text("Todos"))
                 .navigationBarItems(
@@ -21,23 +21,23 @@ struct TodoList: View {
                     }
                 )
                 .sheet(isPresented: $showCreateScreen, content: {
-                    EditTodo(
+                    EditTask(
                         intent: .create,
-                        todo: Todo(id: "", status: .todo, title: "", description: "", createdAt: Date(), dueDate: Date()),
+                        task: Task(id: "", status: .todo, title: "", description: "", createdAt: Date(), dueDate: Date()),
                         onSave: self.handleSave
                     )
                 })
         }
     }
     
-    private func handleSave(todo: Todo) {
-        self.todos.add(todo: todo)
+    private func handleSave(task: Task) {
+        self.tasks.add(task: task)
         showCreateScreen = false
     }
 }
 
-struct TodoList_Previews: PreviewProvider {
+struct TaskList_Previews: PreviewProvider {
     static var previews: some View {
-        TodoList().environmentObject(Todos(store: FixturesTodoStore()))
+        TaskList().environmentObject(Tasks(store: FixturesTaskStore()))
     }
 }

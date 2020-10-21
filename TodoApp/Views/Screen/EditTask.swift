@@ -1,31 +1,31 @@
 import SwiftUI
 
-struct EditTodo: View {
+struct EditTask: View {
     enum Intent {
         case create
         case edit
     }
     
     var intent: Intent
-    @State var todo: Todo
-    var onSave: (Todo) -> Void
+    @State var task: Task
+    var onSave: (Task) -> Void
     
     var title: Text {
         Text(intent == .create ? "Create Todo" : "Edit Todo")
     }
     
     var saveButton: some View {
-        Button("Save", action: { self.onSave(self.todo) }).disabled(!self.validate())
+        Button("Save", action: { self.onSave(self.task) }).disabled(!self.validate())
     }
     
     var body: some View {
         NavigationView {
             Form {
-                TextField("Title", text: $todo.title)
-                TextField("Description", text: $todo.description)
+                TextField("Title", text: $task.title)
+                TextField("Description", text: $task.description)
                 DatePicker(
                     "Due Date",
-                    selection: $todo.dueDate,
+                    selection: $task.dueDate,
                     displayedComponents: [.date, .hourAndMinute]
                 )
                 Section {
@@ -42,21 +42,21 @@ struct EditTodo: View {
     }
     
     private func validate() -> Bool {
-        !todo.title.isEmpty && !todo.description.isEmpty
+        !task.title.isEmpty && !task.description.isEmpty
     }
 }
 
-struct CreateTodo_Previews: PreviewProvider {
+struct EditTask_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EditTodo(
+            EditTask(
                 intent: .edit,
-                todo: Todo(id: "", status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
+                task: Task(id: "", status: .done, title: "", description: "", createdAt: Date(), dueDate: Date()),
                 onSave: {_ in}
             )
-            EditTodo(
+            EditTask(
                 intent: .create,
-                todo: TodoFixtures.get(0),
+                task: TaskFixtures.get(0),
                 onSave: {_ in}
             )
         }

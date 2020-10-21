@@ -1,17 +1,17 @@
 import SwiftUI
 
-struct TodoDetail: View {
+struct TaskDetail: View {
     var dateFormatter: DateFormatter
     var remainingDate: RemainingDate
-    @State var todo: Todo
+    @State var task: Task
     @State var showEditScreen = false
     
-    init(todo: Todo) {
+    init(task: Task) {
         dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         remainingDate = RemainingDate(calendar: Calendar.current, format: .medium)
-        _todo = State(initialValue: todo)
+        _task = State(initialValue: task)
     }
     
     var editButton: some View {
@@ -25,9 +25,9 @@ struct TodoDetail: View {
             Section(header: Text("Detail")) {
                 Button(action: {}) {
                     HStack {
-                        Image(systemName: todo.status == .done ? "largecircle.fill.circle" : "circle")
+                        Image(systemName: task.status == .done ? "largecircle.fill.circle" : "circle")
                             .foregroundColor(Color.green)
-                        Text(todo.title)
+                        Text(task.title)
                             .font(.headline)
                             .fontWeight(.regular)
                             .foregroundColor(Color.black)
@@ -36,9 +36,9 @@ struct TodoDetail: View {
                 EventRow(
                     icon: Image(systemName: "clock"),
                     label: Text("Remaining time"),
-                    value: Text(remainingDate.buildString(from: Date(), to: todo.dueDate))
+                    value: Text(remainingDate.buildString(from: Date(), to: task.dueDate))
                 )
-                Text(todo.description)
+                Text(task.description)
                     .font(.callout)
                     .padding()
             }
@@ -46,8 +46,8 @@ struct TodoDetail: View {
                 EventRow(
                     icon: Image(systemName: "plus.circle"),
                     label: Text("Created at"),
-                    value: Text(dateFormatter.string(from: todo.createdAt)),
-                    description: Text(remainingDate.buildString(from: todo.createdAt, to: Date()) + " ago")
+                    value: Text(dateFormatter.string(from: task.createdAt)),
+                    description: Text(remainingDate.buildString(from: task.createdAt, to: Date()) + " ago")
                 )
             }
             Section(header: Text("Actions")) {
@@ -74,25 +74,25 @@ struct TodoDetail: View {
                 }
             }
         }
-            .navigationBarTitle(Text(todo.title))
+            .navigationBarTitle(Text(task.title))
             .navigationBarItems(trailing: editButton)
             .sheet(isPresented: $showEditScreen, content: {
-                EditTodo(
+                EditTask(
                     intent: .edit,
-                    todo: self.todo,
+                    task: self.task,
                     onSave: self.handleSave
                 )
             })
     }
 
-    private func handleSave(todo: Todo) {
-        self.todo = todo
+    private func handleSave(task: Task) {
+        self.task = task
         showEditScreen = false
     }
 }
 
 struct TodoDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TodoDetail(todo: TodoFixtures.get(0))
+        TaskDetail(task: TaskFixtures.get(0))
     }
 }

@@ -1,20 +1,20 @@
 import Foundation
 import Combine
 
-final class FixturesTodoStore: TodoStore {
+final class FixturesTaskStore: TaskStore {
     
-    var todos: [Todo]
+    var tasks: [Task]
     
     init() {
-        todos = TodoFixtures.todos
+        tasks = TaskFixtures.data
     }
     
-    func all() -> [Todo] {
-        return todos
+    func all() -> [Task] {
+        return tasks
     }
     
-    func add(todo: Todo) {
-        todos.append(todo)
+    func add(task: Task) {
+        tasks.append(task)
     }
     
     func remove(at: IndexSet) {

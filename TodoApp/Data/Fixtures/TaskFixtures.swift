@@ -1,9 +1,9 @@
 import Foundation
 
-class TodoFixtures {
+class TaskFixtures {
 
-    static let todos = [
-        Todo(
+    static let data = [
+        Task(
             id: "1",
             status: .done,
             title: "Todo Title",
@@ -11,7 +11,7 @@ class TodoFixtures {
             createdAt: Date().addingTimeInterval(-86400 * 2 - 7200),
             dueDate: Date().addingTimeInterval(1800)
         ),
-        Todo(
+        Task(
             id: "2",
             status: .todo,
             title: "Todo Title with a long title and done status",
@@ -21,8 +21,8 @@ class TodoFixtures {
         ),
     ]
     
-    static func get(_ index: Int) -> Todo {
-        return todos[index % 2]
+    static func get(_ index: Int) -> Task {
+        return data[index % 2]
     }
     
 }
