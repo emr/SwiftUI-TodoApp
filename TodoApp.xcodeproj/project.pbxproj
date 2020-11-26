@@ -26,7 +26,13 @@
 		BE2BE17124A3FAA300927A6E /* TaskDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17024A3FAA300927A6E /* TaskDetail.swift */; };
 		BE2BE17624A4A04300927A6E /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17524A4A04300927A6E /* EventRow.swift */; };
 		BE2BE17824A4AEFC00927A6E /* EditTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2BE17724A4AEFC00927A6E /* EditTask.swift */; };
-		BECF5D69253C7CFD00ECF206 /* FixtureTodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF5D68253C7CFD00ECF206 /* FixtureTodoStore.swift */; };
+		BE95459E2564676D003B4234 /* TaskAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE95459D2564676D003B4234 /* TaskAPIClient.swift */; };
+		BE9545AE25647613003B4234 /* APITaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9545AD25647613003B4234 /* APITaskStore.swift */; };
+		BEBEF3E92561254200DC63EA /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF3E82561254200DC63EA /* APIResource.swift */; };
+		BEC89A7D2540D17F0078605C /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC89A7C2540D17F0078605C /* APIRequest.swift */; };
+		BEC89A812540D5720078605C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC89A802540D5720078605C /* APIClient.swift */; };
+		BEC89A842540D67E0078605C /* GetTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC89A832540D67E0078605C /* GetTasks.swift */; };
+		BECF5D69253C7CFD00ECF206 /* FixtureTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF5D68253C7CFD00ECF206 /* FixtureTaskStore.swift */; };
 		BECF5D6B253CCB4900ECF206 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF5D6A253CCB4900ECF206 /* Tasks.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +77,13 @@
 		BE2BE17024A3FAA300927A6E /* TaskDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetail.swift; sourceTree = "<group>"; };
 		BE2BE17524A4A04300927A6E /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
 		BE2BE17724A4AEFC00927A6E /* EditTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTask.swift; sourceTree = "<group>"; };
-		BECF5D68253C7CFD00ECF206 /* FixtureTodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureTodoStore.swift; sourceTree = "<group>"; };
+		BE95459D2564676D003B4234 /* TaskAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAPIClient.swift; sourceTree = "<group>"; };
+		BE9545AD25647613003B4234 /* APITaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskStore.swift; sourceTree = "<group>"; };
+		BEBEF3E82561254200DC63EA /* APIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResource.swift; sourceTree = "<group>"; };
+		BEC89A7C2540D17F0078605C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		BEC89A802540D5720078605C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		BEC89A832540D67E0078605C /* GetTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTasks.swift; sourceTree = "<group>"; };
+		BECF5D68253C7CFD00ECF206 /* FixtureTaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureTaskStore.swift; sourceTree = "<group>"; };
 		BECF5D6A253CCB4900ECF206 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +115,11 @@
 		BE1C3C0D2540A7CB009F02C8 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BEC89A822540D62E0078605C /* Requests */,
+				BEC89A7C2540D17F0078605C /* APIRequest.swift */,
+				BEC89A802540D5720078605C /* APIClient.swift */,
+				BEBEF3E82561254200DC63EA /* APIResource.swift */,
+				BE95459D2564676D003B4234 /* TaskAPIClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -212,7 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				BE2BE16524A3D2EA00927A6E /* Fixtures */,
-				BECF5D65253C718A00ECF206 /* TodoStore */,
+				BECF5D65253C718A00ECF206 /* TaskStore */,
 				BECF5D6A253CCB4900ECF206 /* Tasks.swift */,
 			);
 			path = Data;
@@ -242,13 +259,22 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
-		BECF5D65253C718A00ECF206 /* TodoStore */ = {
+		BEC89A822540D62E0078605C /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				BEC89A832540D67E0078605C /* GetTasks.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		BECF5D65253C718A00ECF206 /* TaskStore */ = {
 			isa = PBXGroup;
 			children = (
 				BE06AF6824A64F8C00C86374 /* TaskStore.swift */,
-				BECF5D68253C7CFD00ECF206 /* FixtureTodoStore.swift */,
+				BECF5D68253C7CFD00ECF206 /* FixtureTaskStore.swift */,
+				BE9545AD25647613003B4234 /* APITaskStore.swift */,
 			);
-			path = TodoStore;
+			path = TaskStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,19 +407,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE95459E2564676D003B4234 /* TaskAPIClient.swift in Sources */,
 				BE2BE11624A2494B00927A6E /* AppDelegate.swift in Sources */,
+				BEC89A812540D5720078605C /* APIClient.swift in Sources */,
 				BE06AF6B24A6504300C86374 /* Environment.swift in Sources */,
 				BE2BE17624A4A04300927A6E /* EventRow.swift in Sources */,
 				BE2BE15C24A2A3C100927A6E /* RemainingDate.swift in Sources */,
 				BE2BE17124A3FAA300927A6E /* TaskDetail.swift in Sources */,
+				BE9545AE25647613003B4234 /* APITaskStore.swift in Sources */,
+				BEBEF3E92561254200DC63EA /* APIResource.swift in Sources */,
 				BE2BE16724A3D30000927A6E /* TaskFixtures.swift in Sources */,
 				BE06AF6924A64F8C00C86374 /* TaskStore.swift in Sources */,
 				BE2BE11824A2494B00927A6E /* SceneDelegate.swift in Sources */,
 				BE2BE14E24A2522D00927A6E /* TaskRow.swift in Sources */,
 				BE2BE17824A4AEFC00927A6E /* EditTask.swift in Sources */,
 				BE2BE11A24A2494B00927A6E /* TaskList.swift in Sources */,
-				BECF5D69253C7CFD00ECF206 /* FixtureTodoStore.swift in Sources */,
+				BECF5D69253C7CFD00ECF206 /* FixtureTaskStore.swift in Sources */,
 				BE2BE15024A2645300927A6E /* Task.swift in Sources */,
+				BEC89A842540D67E0078605C /* GetTasks.swift in Sources */,
+				BEC89A7D2540D17F0078605C /* APIRequest.swift in Sources */,
 				BECF5D6B253CCB4900ECF206 /* Tasks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
