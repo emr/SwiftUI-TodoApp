@@ -2,8 +2,9 @@
 
 This is a basic restful API implementation for TodoApp.
 
-To start the api service, just up the containers by using docker compose:
+To start the api service, copy `.env` file as `.env.local`, and up the containers by using docker compose:
 ```
+cp .env .env.local
 docker-compose up
 ```
 
