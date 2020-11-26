@@ -9,7 +9,6 @@ import {
 import { Task } from './task.entity';
 import CreateTaskDto from './create-task.dto';
 import { TaskService } from './task.service';
-import { ObjectID } from 'mongodb';
 
 @Controller({ path: '/tasks' })
 export class TaskController {
@@ -27,10 +26,7 @@ export class TaskController {
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Task> {
-    let task;
-    if (ObjectID.isValid(id)) {
-      task = await this.taskService.findOne(id);
-    }
+    const task = await this.taskService.findOne(id);
     if (!task) {
       throw new NotFoundException(`Task not found with id ${id}`);
     }

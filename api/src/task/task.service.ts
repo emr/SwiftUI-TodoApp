@@ -3,6 +3,7 @@ import { Task } from './task.entity';
 import CreateTaskDto from './create-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { ObjectID } from 'mongodb';
 
 @Injectable()
 export class TaskService {
@@ -22,7 +23,10 @@ export class TaskService {
     return this.repository.find();
   }
 
-  findOne(id: string): Promise<Task | undefined> {
-    return this.repository.findOne(id);
+  async findOne(id: string): Promise<Task | undefined> {
+    if (ObjectID.isValid(id)) {
+      return this.repository.findOne(id);
+    }
+    return undefined;
   }
 }
